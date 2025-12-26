@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../../app/globals.css";
 import { ThemeProvider } from "next-themes";
 import StartBackground from "../StartBackground";
+import { SanityLive } from "@/sanity/lib/live";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,6 +37,8 @@ export default function RootLayout({
 				>
 					<StartBackground />
 					{children}
+
+					<SanityLive /> 
 				</ThemeProvider>
 			</body>
 		</html>
