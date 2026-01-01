@@ -38,7 +38,7 @@ export default function RootLayout({
 					<StartBackground />
 					{children}
 
-					<SanityLive /> 
+					<SanityLive />
 				</ThemeProvider>
 			</body>
 		</html>

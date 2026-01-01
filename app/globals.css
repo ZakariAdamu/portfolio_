@@ -41,81 +41,12 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  .fullscreen-container {
-    position: relative;
-    /* width: 100%; */
-    /* height: 100%; */
-  }
-
-  .fullscreen-container::before {
-    content: "";
-    position: absolute;
-    width: 250vw;
-    height: 250vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: url("/background.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: repeat;
-    z-index: -1;
-    animation: rotateBackground 60s linear infinite;
-  }
-
-  /* Animations */
-
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
-  --animate-meteor: meteor 5s linear infinite;
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes pulse-subtle {
-
-    0%,
-    100% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-    @keyframes meteor {
-      0% {
-        transform: rotate(215deg) translateX(0);
-        opacity: 1;
-      }
-  
-      100% {
-        transform: rotate(215deg) translateX(-600px);
-        opacity: 0;
-      }
-    }
-
 }
 
 :root {
   --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -145,8 +76,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
 }
 
 .dark {
@@ -193,30 +122,33 @@
   }
 }
 
-@layer utilities {
-  .star {
-    position: absolute;
-    border-radius: 9999px;
-    background: white;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+/* Ripple effect animation */
+@keyframes cell-ripple {
+  0% {
+    scale: 1;
+    opacity: 0.4;
+  }
+
+  50% {
+    scale: 0.85;
+    opacity: 0.9;
+  }
+
+  100% {
+    scale: 1;
+    opacity: 0.4;
   }
 }
 
-
-@layer utilities {
-  .meteor {
-    position: absolute;
-    width: 150px;
-    height: 2px;
-    background: linear-gradient(to right, white, transparent);
-    border-radius: 9999px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
+.animate-cell-ripple {
+  animation: cell-ripple var(--duration, 500ms) ease-out var(--delay, 0ms);
 }
 
-@layer utilities {
-  .bg-rotate {
-    background-size: 200% 200%;
-    animation: spin 360s linear infinite;
-  }
+/* 3D Transform and Perspective for CometCard */
+.perspective-distant {
+  perspective: 2000px;
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
 }
