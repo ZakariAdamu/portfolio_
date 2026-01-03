@@ -27,7 +27,8 @@ export async function TestimonialsSection() {
 
 	// Map Sanity testimonials to AnimatedTestimonials format
 	const formattedTestimonials = testimonials
-		.map((testimonial) => ({
+		.map((testimonial, idx) => ({
+			key: `${testimonial.name}-${idx}`,
 			quote: testimonial.testimonial || "",
 			name: testimonial.name || "Anonymous",
 			designation: testimonial.company
