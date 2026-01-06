@@ -4,6 +4,10 @@ import "../../app/globals.css";
 import { ThemeProvider } from "next-themes";
 import StartBackground from "../StartBackground";
 import { SanityLive } from "@/sanity/lib/live";
+import { FloatingDock } from "@/components/FloatingDock";
+import FloatingDockDemo from "@/components/ui/floating-dock-demo";
+import { FloatingDock2 } from "@/components/ui/floating-dock-client2";
+import { FloatingDockClient } from "@/components/FloatingDockClient";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -37,6 +41,10 @@ export default function RootLayout({
 				>
 					<StartBackground />
 					{children}
+
+					{/* <FloatingDock /> */}
+					<FloatingDockDemo />
+					{/* <FloatingDock2 items={[]} /> */}
 
 					<SanityLive />
 				</ThemeProvider>
