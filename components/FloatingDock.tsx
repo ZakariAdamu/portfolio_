@@ -16,6 +16,6 @@ export async function FloatingDock() {
 	if (!navItems || navItems.length === 0) {
 		return null;
 	}
-
+	// render ur floating dock demo here and pass navItems to it. later replace component name with FloatingDockClient.
 	return <FloatingDockClient navItems={navItems} />;
 }
