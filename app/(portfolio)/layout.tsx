@@ -48,6 +48,7 @@ export default async function RootLayout({
 					{children}
 					{/* <FloatingDock /> */}
 					<FloatingDockDemo />
+
 					{/* <FloatingDock2 items={[]} /> */}
 
 					<SanityLive />
