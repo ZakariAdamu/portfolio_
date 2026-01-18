@@ -8,8 +8,6 @@ import { draftMode } from "next/headers";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { VisualEditing } from "next-sanity/visual-editing";
 import FloatingDock from "@/components/ui/floating-dock";
-import { LoaderFour } from "@/components/ui/loader";
-import { SkeletonLoader } from "@/components/ui/skeleton-loader";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -45,8 +43,7 @@ export default async function RootLayout({
 					<div className="fixed md:bottom-6 md:right-24 top-4 right-10 md:top-auto md:left-auto z-[50]">
 						<ThemeToggle />
 					</div>
-					{/* <LoaderFour text="Preparing your experience..." /> */}
-					<SkeletonLoader />
+
 					{children}
 					<FloatingDock />
 
