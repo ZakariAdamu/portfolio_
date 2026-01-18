@@ -59,7 +59,7 @@ export async function CertificationsSection() {
 
 				<div className="@container">
 					<div className="grid grid-cols-1 @2xl:grid-cols-2 gap-10">
-						{certifications.map((cert) => (
+						{certifications?.slice(0, 2).map((cert) => (
 							<CometCard
 								key={`${cert.issuer}-${cert.name}-${cert.issueDate}`}
 								rotateDepth={8}

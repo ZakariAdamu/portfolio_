@@ -35,7 +35,7 @@ export async function ProjectsSection() {
 
 				<div className="@container">
 					<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
-						{projects.map((project) => (
+						{projects.slice(0, 3).map((project) => (
 							<div
 								key={project.slug?.current}
 								className="@container/card group bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
