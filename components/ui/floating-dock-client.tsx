@@ -13,7 +13,7 @@ import {
 
 import { useRef, useState } from "react";
 
-export const FloatingDock2 = ({
+export const FloatingDockClient = ({
 	items,
 	desktopClassName,
 	mobileClassName,

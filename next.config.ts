@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
 				protocol: "https",
 				hostname: "cdn.sanity.io",
 			},
+			{
+				protocol: "https",
+				hostname: "assets.aceternity.com",
+			},
+			{
+				protocol: "https",
+				hostname: "https://assets.aceternity.com/logo-dark.png",
+			},
 		],
 	},
 };

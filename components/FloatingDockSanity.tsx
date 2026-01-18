@@ -1,6 +1,7 @@
+"use server";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
-import { FloatingDockClient } from "./FloatingDockClient";
+import { FloatingDockClient } from "./ui/floating-dock-client";
 
 const NAVIGATION_QUERY =
 	defineQuery(`*[_type == "navigation"] | order(order asc){
@@ -10,12 +11,15 @@ const NAVIGATION_QUERY =
   isExternal
 }`);
 
-export async function FloatingDock() {
+export async function FloatingDockSanity() {
 	const { data: navItems } = await sanityFetch({ query: NAVIGATION_QUERY });
 
 	if (!navItems || navItems.length === 0) {
 		return null;
 	}
-	// render ur floating dock demo here and pass navItems to it. later replace component name with FloatingDockClient.
-	return <FloatingDockClient navItems={navItems} />;
+	return (
+		<div className="fixed inset-x-0 bottom-4 z-30 flex items-center justify-center">
+			<FloatingDockClient items={navItems} />
+		</div>
+	);
 }
