@@ -44,7 +44,7 @@ export const LoaderFour: React.FC<{ text?: string }> = ({
 					<motion.div
 						className="h-3 w-3 rounded-full bg-neutral-800 dark:bg-neutral-200"
 						animate={{ y: [0, -10, 0] }}
-						transition={ballTransition(0)}
+						transition={ballTransition(0.8)}
 					/>
 					<motion.div
 						className="h-3 w-3 rounded-full bg-neutral-800 dark:bg-neutral-200"
