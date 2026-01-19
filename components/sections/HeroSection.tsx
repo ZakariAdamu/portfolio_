@@ -61,7 +61,7 @@ const HeroSection = async () => {
 									{profile.headline}
 								</p>
 							)}
-							<p className="text-base @md/hero:text-lg text-muted-foreground leading-relaxed">
+							<p className="text-base @md/hero:text-lg text-muted-foreground-2 leading-relaxed">
 								{profile.shortBio}
 							</p>
 

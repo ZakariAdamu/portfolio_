@@ -36,7 +36,7 @@ export async function AboutSection() {
 							components={{
 								block: {
 									normal: ({ children }) => (
-										<p className="text-muted-foreground leading-relaxed mb-4">
+										<p className="text-muted-foreground-2 leading-relaxed mb-4">
 											{children}
 										</p>
 									),
