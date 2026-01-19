@@ -55,8 +55,8 @@ export default function Preloader() {
 					{/* Animated gradient background */}
 					<div className="absolute inset-0 overflow-hidden">
 						<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-900 rounded-full blur-3xl animate-pulse" />
-						<div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-800 rounded-full blur-3xl animate-pulse delay-1000" />
-						<div className="absolute top-1/2 right-1/3 w-64 h-64 bg-gray-700 rounded-full blur-3xl animate-pulse delay-2000" />
+						<div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-700 rounded-full blur-3xl animate-pulse delay-1000" />
+						<div className="absolute top-1/2 right-1/3 w-64 h-64 bg-gray-800 rounded-full blur-3xl animate-pulse delay-2000" />
 					</div>
 
 					{/* Loader content */}
@@ -87,7 +87,7 @@ export default function Preloader() {
 								fontFamily: "Inter Tight",
 							}}
 						>
-							<h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent animate-gradient">
+							<h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 bg-clip-text text-transparent animate-gradient">
 								Welcome!
 							</h1>
 							<p className="text-white/60 text-lg md:text-xl font-medium">
