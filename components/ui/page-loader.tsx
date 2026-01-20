@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import Rocket from "@/public/rocket.gif";
+import Image from "next/image";
 
 export default function Preloader() {
 	const [loading, setLoading] = useState(true);
@@ -65,18 +67,17 @@ export default function Preloader() {
 						<div className="flex justify-center">
 							<div className="relative">
 								<div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded-full blur-2xl opacity-50 animate-spin-slow" />
-								{/* <div className="relative bg-gradient-to-br from-purple-600/30 to-blue-600/30 p-6 rounded-full backdrop-blur-xl border border-white/20">
-									<Rocket className="w-16 h-16 text-white animate-bounce-slow" />
-									 <Image
-										src={joinLogo}
-										alt="Joinda Quest"
+								<div className="relative bg-gradient-to-br from-gray-600/30 to-slate-600/30 p-6 rounded-full backdrop-blur-xl border border-white/20">
+									<Image
+										src={Rocket}
+										alt="Animated Rocket Logo"
 										width={140}
 										height={40}
 										className="h-6 md:h-16 w-auto"
 										priority
 										placeholder="blur"
 									/>
-								</div> */}
+								</div>
 							</div>
 						</div>
 
