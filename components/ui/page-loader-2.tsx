@@ -2,10 +2,10 @@
 // import PortfolioContent from "@/components/PortfolioContent";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Rocket from "@/public/rocket.gif";
+import GraySpace from "@/public/gray-text-space.jpg";
 
-const AnimatedRocket = () => (
-	<Image src={Rocket} alt="Rocket" width={96} height={96} unoptimized />
+const LoadingLogo = () => (
+	<Image src={GraySpace} alt="Gray Space" width={96} height={96} unoptimized />
 );
 
 export default function PageLoader2() {
@@ -16,7 +16,7 @@ export default function PageLoader2() {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setProgress((p) => (p >= 95 ? p : p + 1));
-		}, 50);
+		}, 25); // reduced from 50ms to 25ms => 50% faster
 
 		return () => clearInterval(interval);
 	}, []);
@@ -35,13 +35,13 @@ export default function PageLoader2() {
 
 				{/* Loader content */}
 				<div className="relative text-center space-y-8 px-4">
-					{/* Animated logo/icon */}
+					{/* logo/icon */}
 					<div className="flex justify-center">
 						<div className="relative">
 							<div className="absolute inset-0 bg-gradient-to-r from-gray-600 via-slate-700 to-gray-800 rounded-full blur-2xl opacity-50 animate-spin-slow" />
-							<div className="relative bg-gradient-to-br from-gray-600/30 to-slate-600/30 p-6 rounded-full backdrop-blur-xl border border-white/20">
-								<AnimatedRocket />
-							</div>
+							{/* <div className="relative bg-gradient-to-br from-gray-600/30 to-slate-600/30 p-6 rounded-full backdrop-blur-xl border border-white/20">
+								<LoadingLogo />
+							</div> */}
 						</div>
 					</div>
 
