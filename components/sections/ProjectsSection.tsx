@@ -3,6 +3,7 @@ import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
+import { Tagline } from "./Tagline";
 
 const PROJECTS_QUERY =
 	defineQuery(`*[_type == "project" && featured == true] | order(order asc)[0...6]{
@@ -70,9 +71,7 @@ export async function ProjectsSection() {
 										<h3 className="text-lg @md/card:text-xl font-semibold mb-2 line-clamp-2">
 											{project.title || "Untitled Project"}
 										</h3>
-										<p className="text-muted-foreground text-xs @md/card:text-sm line-clamp-2">
-											{project.tagline}
-										</p>
+										<Tagline text={project.tagline} />
 									</div>
 
 									{/* Tech Stack */}
