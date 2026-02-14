@@ -25,7 +25,7 @@ export async function ProjectsSection() {
 	}
 
 	return (
-		<section id="projects" className="py-20 px-6 bg-muted/30">
+		<section id="projects" className="pt-20 lg:py-20 px-6">
 			<div className="container mx-auto max-w-6xl">
 				<div className="text-center mb-16">
 					<h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -43,7 +43,7 @@ export async function ProjectsSection() {
 							>
 								{/* Project Image */}
 								{project.coverImage && (
-									<div className="relative aspect-video overflow-hidden bg-muted">
+									<div className="relative aspect-video overflow-hidden">
 										<Image
 											src={urlFor(project.coverImage)
 												.width(600)
@@ -54,7 +54,7 @@ export async function ProjectsSection() {
 											className="object-cover group-hover:scale-105 transition-transform duration-300"
 										/>
 										{/* Glass overlay that fades on hover */}
-										<div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] group-hover:opacity-0 transition-opacity duration-300" />
+										<div className="absolute inset-0 bg-background/10 group-hover:opacity-0 transition-opacity duration-300" />
 									</div>
 								)}
 
