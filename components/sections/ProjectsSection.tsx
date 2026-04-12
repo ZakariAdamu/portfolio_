@@ -35,7 +35,7 @@ export async function ProjectsSection() {
 				</div>
 
 				<div className="@container">
-					<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
+					<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-2 gap-8">
 						{projects.slice(0, 4).map((project) => (
 							<div
 								key={project.slug?.current}
@@ -120,7 +120,9 @@ export async function ProjectsSection() {
 											>
 												{project.githubUrl.toLowerCase().includes("github")
 													? "GitHub"
-													: "Figma"}
+													: project.githubUrl.toLowerCase().includes("figma")
+														? "Figma"
+														: "Source"}
 											</Link>
 										)}
 									</div>
