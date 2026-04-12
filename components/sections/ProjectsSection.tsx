@@ -35,8 +35,8 @@ export async function ProjectsSection() {
 				</div>
 
 				<div className="@container">
-					<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-3 gap-8">
-						{projects.slice(0, 3).map((project) => (
+					<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-2 gap-8">
+						{projects.slice(0, 4).map((project) => (
 							<div
 								key={project.slug?.current}
 								className="@container/card group bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
@@ -118,7 +118,11 @@ export async function ProjectsSection() {
 												rel="noopener noreferrer"
 												className="px-3 py-2 @md/card:px-4 rounded-lg border hover:bg-accent transition-colors text-xs @md/card:text-sm text-center"
 											>
-												GitHub
+												{project.githubUrl.toLowerCase().includes("github")
+													? "GitHub"
+													: project.githubUrl.toLowerCase().includes("figma")
+														? "Figma"
+														: "Source"}
 											</Link>
 										)}
 									</div>

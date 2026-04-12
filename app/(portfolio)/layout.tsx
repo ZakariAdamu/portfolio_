@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../../app/globals.css";
+import "../globals.css";
 import { ThemeProvider } from "next-themes";
 import { SanityLive } from "@/sanity/lib/live";
 import { ThemeToggle } from "../ThemeToggle";
@@ -37,7 +37,7 @@ export default async function RootLayout({
 			>
 				<ThemeProvider
 					enableSystem={true}
-					defaultTheme="system"
+					defaultTheme="dark"
 					attribute="class"
 				>
 					<div className="fixed md:bottom-6 md:right-24 top-4 right-10 md:top-auto md:left-auto z-[50]">
