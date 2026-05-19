@@ -35,101 +35,143 @@ export async function ProjectsSection() {
 				</div>
 
 				<div className="@container">
-					<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-2 gap-8">
-						{projects.slice(0, 4).map((project) => (
-							<div
-								key={project.slug?.current}
-								className="@container/card group bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
-							>
-								{/* Project Image */}
-								{project.coverImage && (
-									<div className="relative aspect-video overflow-hidden">
-										<Image
-											src={urlFor(project.coverImage)
-												.width(600)
-												.height(400)
-												.url()}
-											alt={project.title || "Project image"}
-											fill
-											className="object-cover group-hover:scale-105 transition-transform duration-300"
-										/>
-										{/* Glass overlay that fades on hover */}
-										<div className="absolute inset-0 bg-background/10 group-hover:opacity-0 transition-opacity duration-300" />
-									</div>
-								)}
-
-								{/* Project Content */}
-								<div className="p-4 @md/card:p-6 space-y-3 @md/card:space-y-4">
-									<div>
-										<div className="flex items-center gap-2 mb-2">
-											{project.category && (
-												<span className="text-xs px-2 py-0.5 @md/card:py-1 rounded-full bg-primary/10 text-primary">
-													{project.category}
-												</span>
+					{/** Build an array of up to 3 projects and center the last item when it sits alone in the second row */}
+					{(() => {
+						const projectsToShow = projects.slice(0, 3);
+						return (
+							<div className="grid grid-cols-1 @2xl:grid-cols-2 @5xl:grid-cols-2 gap-8">
+								{projectsToShow.map((project, idx) => {
+									const isLastSingleCentered =
+										projectsToShow.length > 1 &&
+										projectsToShow.length % 2 === 1 &&
+										idx === projectsToShow.length - 1;
+									// project card inner content to avoid repetition in conditional rendering for the last single item in the second row when there are 3 items in total.
+									const cardInner = (
+										<>
+											{/* Project Image */}
+											{project.coverImage && (
+												<div className="relative aspect-video overflow-hidden">
+													<Image
+														src={urlFor(project.coverImage)
+															.width(600)
+															.height(400)
+															.url()}
+														alt={project.title || "Project image"}
+														fill
+														className="object-cover group-hover:scale-105 transition-transform duration-300"
+													/>
+													<div className="absolute inset-0 bg-background/10 group-hover:opacity-0 transition-opacity duration-300" />
+												</div>
 											)}
-										</div>
-										<h3 className="text-lg @md/card:text-xl font-semibold mb-2 line-clamp-2">
-											{project.title || "Untitled Project"}
-										</h3>
-										<Tagline text={project.tagline} />
-									</div>
 
-									{/* Tech Stack */}
-									{project.technologies && project.technologies.length > 0 && (
-										<div className="flex flex-wrap gap-1.5 @md/card:gap-2">
-											{project.technologies.slice(0, 4).map((tech, idx) => {
-												const techData =
-													tech && typeof tech === "object" && "name" in tech
-														? tech
-														: null;
-												return techData?.name ? (
-													<span
-														key={`${project.slug?.current}-tech-${idx}`}
-														className="text-xs px-2 py-0.5 @md/card:py-1 rounded-md bg-muted"
-													>
-														{techData.name}
-													</span>
-												) : null;
-											})}
-											{project.technologies.length > 4 && (
-												<span className="text-xs px-2 py-0.5 @md/card:py-1 rounded-md bg-muted">
-													+{project.technologies.length - 4}
-												</span>
-											)}
-										</div>
-									)}
+											{/* Project Content */}
+											<div className="p-4 @md/card:p-6 space-y-3 @md/card:space-y-4">
+												<div>
+													<div className="flex items-center gap-2 mb-2">
+														{project.category && (
+															<span className="text-xs px-2 py-0.5 @md/card:py-1 rounded-full bg-primary/10 text-primary">
+																{project.category}
+															</span>
+														)}
+													</div>
+													<h3 className="text-lg @md/card:text-xl font-semibold mb-2 line-clamp-2">
+														{project.title || "Untitled Project"}
+													</h3>
+													<Tagline text={project.tagline} />
+												</div>
 
-									{/* Actions */}
-									<div className="flex flex-col @xs/card:flex-row gap-2 @xs/card:gap-3 pt-2">
-										{project.liveUrl && (
-											<Link
-												href={project.liveUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="flex-1 text-center px-3 py-2 @md/card:px-4 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-xs @md/card:text-sm"
+												{/* Tech Stack */}
+												{project.technologies &&
+													project.technologies.length > 0 && (
+														<div className="flex flex-wrap gap-1.5 @md/card:gap-2">
+															{project.technologies
+																.slice(0, 4)
+																.map((tech, idxTech) => {
+																	const techData =
+																		tech &&
+																		typeof tech === "object" &&
+																		"name" in tech
+																			? tech
+																			: null;
+																	return techData?.name ? (
+																		<span
+																			key={`${project.slug?.current}-tech-${idxTech}`}
+																			className="text-xs px-2 py-0.5 @md/card:py-1 rounded-md bg-muted"
+																		>
+																			{techData.name}
+																		</span>
+																	) : null;
+																})}
+															{project.technologies.length > 4 && (
+																<span className="text-xs px-2 py-0.5 @md/card:py-1 rounded-md bg-muted">
+																	+{project.technologies.length - 4}
+																</span>
+															)}
+														</div>
+													)}
+
+												{/* Actions */}
+												<div className="flex flex-col @xs/card:flex-row gap-2 @xs/card:gap-3 pt-2">
+													{project.liveUrl && (
+														<Link
+															href={project.liveUrl}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="flex-1 text-center px-3 py-2 @md/card:px-4 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-xs @md/card:text-sm"
+														>
+															Live Demo
+														</Link>
+													)}
+													{project.githubUrl && (
+														<Link
+															href={project.githubUrl}
+															target="_blank"
+															rel="noopener noreferrer"
+															className="px-3 py-2 @md/card:px-4 rounded-lg border hover:bg-accent transition-colors text-xs @md/card:text-sm text-center"
+														>
+															{project.githubUrl
+																.toLowerCase()
+																.includes("github")
+																? "GitHub"
+																: project.githubUrl
+																			.toLowerCase()
+																			.includes("figma")
+																	? "Figma"
+																	: "Source"}
+														</Link>
+													)}
+												</div>
+											</div>
+										</>
+									);
+
+									if (isLastSingleCentered) {
+										return (
+											<div
+												key={project.slug?.current ?? idx}
+												className="col-span-1 @2xl:col-span-2 flex justify-center"
 											>
-												Live Demo
-											</Link>
-										)}
-										{project.githubUrl && (
-											<Link
-												href={project.githubUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="px-3 py-2 @md/card:px-4 rounded-lg border hover:bg-accent transition-colors text-xs @md/card:text-sm text-center"
-											>
-												{project.githubUrl.toLowerCase().includes("github")
-													? "GitHub"
-													: project.githubUrl.toLowerCase().includes("figma")
-														? "Figma"
-														: "Source"}
-											</Link>
-										)}
-									</div>
-								</div>
+												<div className="w-full max-w-[640px]">
+													<div className="@container/card group bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+														{cardInner}
+													</div>
+												</div>
+											</div>
+										);
+									}
+
+									return (
+										<div
+											key={project.slug?.current ?? idx}
+											className="@container/card group bg-card border rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+										>
+											{cardInner}
+										</div>
+									);
+								})}
 							</div>
-						))}
-					</div>
+						);
+					})()}
 				</div>
 			</div>
 		</section>
