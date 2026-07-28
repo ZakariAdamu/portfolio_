@@ -10,8 +10,8 @@ const PortfolioContent = () => {
 		<>
 			<HeroSection />
 			<AboutSection />
-			<TestimonialsSection />
 			<ProjectsSection />
+			<TestimonialsSection />
 			<CertificationsSection />
 			{/* <ServicesSection /> */}
 			<ContactSection />
