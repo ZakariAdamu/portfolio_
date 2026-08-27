@@ -50,8 +50,8 @@ export default defineType({
 			title: "Technologies Used",
 			type: "array",
 			of: [{ type: "reference", to: [{ type: "skill" }] }],
-			description: "Select from your skills list (max 6 recommended)",
-			validation: (Rule) => Rule.max(8),
+			description: "Select from your skills list (max 11 recommended)",
+			validation: (Rule) => Rule.max(11),
 		}),
 		defineField({
 			name: "category",
